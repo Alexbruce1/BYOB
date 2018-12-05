@@ -9,5 +9,10 @@ app.use(bodyParser.json());
 
 describe('Server', () => {
   describe('/', () => {
+
+    it('should', () => {
+      expect(2).to.equal(2);
+    });
+
   });
 });
