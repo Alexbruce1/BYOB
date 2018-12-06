@@ -1,26 +1,29 @@
 {
-  "name": "BYOB",
+  "name": "byob",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "NODE_ENV=test mocha --exit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jstewart3313/BYOB.git"
+    "url": "git+https://github.com/AlexBruce1/BYOB.git"
   },
   "bugs": {
-    "url": "https://github.com/Jstewart3313/BYOB/issues"
+    "url": "https://github.com/AlexBruce1/BYOB/issues"
   },
-  "homepage": "https://github.com/Jstewart3313/BYOB#readme",
+  "homepage": "https://github.com/AlexBruce1/BYOB#readme",
   "description": "",
   "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "express": "^4.16.4",
     "knex": "^0.15.2",
+    "mocha": "^5.2.0",
     "pg": "^7.7.1"
   }
 }

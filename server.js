@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const bodyParser = require("body-parser");
-const environment = process.env.NODE_ENV || "development";
-const configuration = require("./knexfile")[environment];
-const database = require("knex")(configuration);
+const bodyParser = require('body-parser');
+const environment = process.env.NODE_ENV || 'development';
+const configuration = require('./knexfile')[environment];
+const database = require('knex')(configuration);
 
 
 app.set('port', process.env.PORT || 3000);
@@ -14,7 +14,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/api/v1/maker', (request, repsonse) => {
-  database('maker')
+  response.send(database('maker'))
 })
 
 
@@ -22,40 +22,39 @@ app.get('/api/v1/maker', (request, repsonse) => {
 
 
 
-app.get('/', (request, response) => {
-  // DO THINGS HERE
+app.get('/api/v1/maker', (request, response) => {
+  // return car makers data
 });
 
-app.get('/', (request, response) => {
-  // DO THINGS HERE
+app.get('/api/v1/model', (request, response) => {
+  // return car models data
+
+  //check if query exist if not do normal
+  //if so do other
 });
 
-app.get('/', (request, response) => {
-  // DO THINGS HERE
+app.get('/api/v1/maker/:maker_name', (request, response) => {
+  // return all models from specified maker
 });
 
-app.post('/', (request, response) => {
-  // DO THINGS HERE
+// app.post('/api/v1/maker', (request, response) => {
+// });
+
+app.post('/api/v1/maker', (request, response) => {
+  // add new maker to the database
 });
 
-app.post('/', (request, response) => {
-  // DO THINGS HERE
+app.put('/api/v1/models', (request, response) => {
+
 });
 
-app.put('/', (request, response) => {
-  // DO THINGS HERE
+app.patch('/api/v1/maker', (request, response) => {
 });
 
-app.patch('/', (request, response) => {
-  // DO THINGS HERE
+app.delete('/api/v1/maker', (request, response) => {
 });
 
-app.delete('/', (request, response) => {
-  // DO THINGS HERE
-});
-
-app.delete('/', (request, response) => {
-  // DO THINGS HERE
+app.delete('/api/v1/maker', (request, response) => {
 });
 
 
