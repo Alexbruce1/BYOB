@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
       table.string('maker')
       table.integer('year')
 
-      table.timestamps(true, true)
+      table.timestamps(true, true);
     }),
 
     knex.schema.createTable('models', function(table) {
@@ -19,7 +19,7 @@ exports.up = function(knex, Promise) {
       table.integer('torque');
       table.integer('price');
 
-      table.timestamps(true, true)
+      table.timestamps(true, true);
     })
   ])
 };
