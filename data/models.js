@@ -1,5 +1,6 @@
-let vehicles = [
+let models = [
   {
+    make: 'Audi',
     model: 'R8',
     displacement: '5.2',
     engine: 'V10',
@@ -9,6 +10,7 @@ let vehicles = [
     price: 175000
   },
   {
+    make: 'Audi',
     model: 'RS7',
     displacement: '4',
     engine: 'V8',
@@ -18,6 +20,7 @@ let vehicles = [
     price: 125000
   },
   {
+    make: 'Bentley',
     model: 'Continental GT',
     displacement: '6',
     engine: 'W12',
@@ -27,6 +30,7 @@ let vehicles = [
     price: 220000
   },
   {
+    make: 'Bentley',
     model: 'Bentayga',
     displacement: '6',
     engine: 'V12',
@@ -36,6 +40,7 @@ let vehicles = [
     price: 165000
   },
   {
+    make: 'BMW',
     model: 'M3',
     displacement: '3',
     engine: 'I6',
@@ -45,6 +50,7 @@ let vehicles = [
     price: 76000
   },
   {
+    make: 'BMW',
     model: 'M5',
     displacement: '4.4',
     engine: 'V8',
@@ -54,6 +60,7 @@ let vehicles = [
     price: 120000
   },
   {
+    make: 'Bugatti',
     model: 'Veyron',
     displacement: '8',
     engine: 'W16',
@@ -63,6 +70,7 @@ let vehicles = [
     price: 1600000
   },
   {
+    make: 'Bugatti',
     model: 'Chiron',
     displacement: '8',
     engine: 'W16',
@@ -72,6 +80,7 @@ let vehicles = [
     price: 2700000
   },
   {
+    make: 'Chevrolet',
     model: 'Corvette',
     displacement: '3.9',
     engine: 'v6',
@@ -81,6 +90,7 @@ let vehicles = [
     price: 300000
   },
   {
+    make: 'Chevrolet',
     model: 'Camaro',
     displacement: '3.8',
     engine: 'V8',
@@ -90,6 +100,7 @@ let vehicles = [
     price: 100000
   },
   {
+    make: 'Dodge',
     model: 'Viper',
     displacement: '8',
     engine: 'V10',
@@ -99,6 +110,7 @@ let vehicles = [
     price: 25000
   },
   {
+    make: 'Dodge',
     model: 'Challenger',
     displacement: '6.2',
     engine: 'V8',
@@ -108,6 +120,7 @@ let vehicles = [
     price: 85000
   },
   {
+    make: 'Ferrari',
     model: '458',
     displacement: '4.5',
     engine: 'V8',
@@ -117,6 +130,7 @@ let vehicles = [
     price: 270000
   },
   {
+    make: 'Ferrari',
     model: 'LaFerrari',
     displacement: '6.3',
     engine: 'V12',
@@ -126,6 +140,7 @@ let vehicles = [
     price: 1700000
   },
   {
+    make: 'Ford',
     model: 'Mustang',
     displacement: '5',
     engine: 'V8',
@@ -135,6 +150,7 @@ let vehicles = [
     price: 50000
   },
   {
+    make: 'Ford',
     model: 'GT',
     displacement: '5.4',
     engine: 'V8',
@@ -144,6 +160,7 @@ let vehicles = [
     price: 450000
   },
   {
+    make: 'Honda',
     model: 'NSX',
     displacement: '3',
     engine: 'v6',
@@ -153,6 +170,7 @@ let vehicles = [
     price: 30000
   },
   {
+    make: 'Honda',
     model: 'S2000',
     displacement: '2',
     engine: 'I4',
@@ -162,6 +180,7 @@ let vehicles = [
     price: 21000
   },
   {
+    make: 'Jaguar',
     model: 'F-Type',
     displacement: '5.0',
     engine: 'V8',
@@ -171,6 +190,7 @@ let vehicles = [
     price: 69000
   },
   {
+    make: 'Jaguar',
     model: 'F-Pace',
     displacement: '5',
     engine: 'V8',
@@ -180,6 +200,7 @@ let vehicles = [
     price: 60000
   },
   {
+    make: 'Koenigsegg',
     model: 'Agera',
     displacement: '4',
     engine: 'V8',
@@ -189,6 +210,7 @@ let vehicles = [
     price: 2000000
   },
   {
+    make: 'Koenigsegg',
     model: 'Regera',
     displacement: '4',
     engine: 'V8',
@@ -198,6 +220,7 @@ let vehicles = [
     price: 2100000
   },
   {
+    make: 'Lamborghini',
     model: 'Huracan',
     displacement: '5.2',
     engine: 'V10',
@@ -207,6 +230,7 @@ let vehicles = [
     price: 320000
   },
   {
+    make: 'Lamborghini',
     model: 'Aventador',
     displacement: '6.2',
     engine: 'V12',
@@ -216,6 +240,7 @@ let vehicles = [
     price: 480000
   },
   {
+    make: 'Lexus',
     model: 'LFA',
     displacement: '4.8',
     engine: 'V10',
@@ -225,6 +250,7 @@ let vehicles = [
     price: 400000
   },
   {
+    make: 'Lexus',
     model: 'RCF',
     displacement: '5',
     engine: 'V8',
@@ -234,6 +260,7 @@ let vehicles = [
     price: 70000
   },
   {
+    make: 'McLaren',
     model: '600LT',
     displacement: '4',
     engine: 'V8',
@@ -243,6 +270,7 @@ let vehicles = [
     price: 280000
   },
   {
+    make: 'McLaren',
     model: 'Senna',
     displacement: '4',
     engine: 'V8',
@@ -252,6 +280,7 @@ let vehicles = [
     price: 900000
   },
   {
+    make: 'Porsche',
     model: '918 Spyder',
     displacement: '4.6',
     engine: 'V8',
@@ -261,6 +290,7 @@ let vehicles = [
     price: 1300000
   },
   {
+    make: 'Porsche',
     model: '911 Turbo',
     displacement: '3.6',
     engine: 'Flat 6',
@@ -271,4 +301,4 @@ let vehicles = [
   }
 ];
 
-module.exports = vehicles;
+module.exports = models;
