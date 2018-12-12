@@ -4,16 +4,14 @@ const bodyParser = require('body-parser');
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
+const utils = require('util')
 
-const makers = require('./data/makers');
-const models = require('./data/models');
-
-
+app.use(bodyParser.json());
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'BYOB';
 
 app.get('/', (request, response) => {
-  response.send('BYOB');
+  response.send(app.locals.title);
 });
 
 app.get('/api/v1/makers', async (request, response) => {
@@ -35,48 +33,83 @@ app.get('/api/v1/models', async (request, response) => {
 });
 
 app.get('/api/v1/makers/:id', (request, response) => {
-
   let { id } = request.params;
 
-  const specificMaker = makers.filter(maker => {
-    return maker.name.includes(id);
-  })
+  database('makers').where('id', id).select()
+    .then(result => {
+      response.status(200).json(result)
+    })
+});
 
-  response.status(200).json(specificMaker);
+app.get('/api/v1/models/:id', (request, response) => {
+  let { id } = request.params;
+
+  database('models').where('id', id).select()
+    .then(result => {
+      response.status(200).json(result)
+    })
 });
 
 app.post('/api/v1/makers', (request, response) => {
-  // const { makerName, makerYear } = request.body;
-  // const newMaker = {
-  //   name: makerName,
-  //   year: makerYear,
-  //   models: []
-  // }
+  let newMaker = {
+    ...request.body
+  }
 
-  // response.status(200).json(newMaker);
+  for(let requiredParam of ['maker', 'year']) {
+    if (!newMaker[requiredParam]) {
+      return response.status(422).json({error: `Missing param ${requiredParam}`})
+    }
+  }
+
+  database('makers').insert(newMaker, 'id')
+    .then(makerId => {
+      return response.status(201).json(`Added new maker with and Id of ${makerId[0]}`)
+    });
 });
 
 app.post('/api/v1/models', (request, response) => {
-  // add new model to the database
+  let newModel = {
+    ...request.body
+  }
 
-  // make sure model has maker_id
-});
+  for (let requiredParam of ['model', 'displacement', 'engine', 'drivetrain', 'horsepower', 'price']) {
+    if (!newModel[requiredParam]) {
+      return response.status(422).json({error: `Missing param ${requiredParam}`})
+    }
+  }
+
+  database('models').insert(newModel, 'id')
+    .then(modelId => {
+      return response.status(201).json(`Added new model with and Id of ${modelId[0]}`)
+    })
+})
 
 app.patch('/api/v1/makers', (request, response) => {
-// change part of a piece of 
+  
+  // response.status(200).json();
 });
 
 app.patch('/api/v1/models', (request, response) => {
-  // change part of the model data
+  
+  // response.status(200).json();
 });
 
-app.delete('/api/v1/makers', (request, response) => {
-  // delete a maker from the db
+app.delete('/api/v1/makers/:id', (request, response) => {
+  const { id } = request.params;
 
+  database('makers').where('id', id).del()
+    .then(result => {
+      response.status(200).json(`removed ${result} maker`)
+    });
 });
 
-app.delete('/api/v1/models', (request, response) => {
-  // delete a model from the db
+app.delete('/api/v1/models/:id', (request, response) => {
+  const { id } = request.params;
+
+  database('models').where('id', id).del()
+    .then(result => {
+      response.status(200).json(`removed ${result} model`)
+    });
 });
 
 app.listen(app.get('port'), () => {
