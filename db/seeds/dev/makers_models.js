@@ -18,7 +18,6 @@ exports.seed = function(knex, Promise) {
           .then(maker_id => {
             let modelPromises = [];
             modelData.forEach(model => {
-               let maker = model.make;
                  modelPromises.push(createModel(knex, model, maker_id[0]))
              });
              return Promise.all(modelPromises);
@@ -26,8 +25,6 @@ exports.seed = function(knex, Promise) {
         })
       )
     })
- });
-
 };
 
 const createModel = (knex, model, id) => {
