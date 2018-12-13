@@ -11,25 +11,27 @@ chai.use(chaiHttp);
 describe('Server', () => {
   describe('Makers', () => {
     describe('GET', () => {
-      it('should return text to the home page', () => {
+      it('should return text to the home page', done => {
         chai.request(app)
           .get('/api/v1/makers')
           .end((err, response) => {
             expect(response).to.have.status(200);
+            done()
         });
       });
       
-      it('should return an array of objects', ()  => {
+      it('should return an array of objects', done  => {
         chai.request(app)
           .get('/api/v1/makers')
           .end((err, response) => {
             expect(response.body).to.be.a('array');
+            done()
         });
       });
     });
 
     describe('POST', () => {
-      it('should return a 201 status if successful', () => {
+      it('should return a 201 status if successful', done => {
         const newMaker = {
           "maker": "Pagani",
           "year": 2018
@@ -40,10 +42,11 @@ describe('Server', () => {
           .send(newMaker)
           .end((err, response) => {
             expect(response).to.have.status(201);
+            done()
         })
       });
 
-      it('should return a 422 if any params are missing', () => {
+      it('should return a 422 if any params are missing', done => {
         const newMaker = {
           "maker": "Pagani"
         }
@@ -53,6 +56,7 @@ describe('Server', () => {
           .send(newMaker)
           .end((err, response) => {
             expect(response).to.have.status(422);
+            done()
           });
       });
     });
@@ -63,11 +67,12 @@ describe('Server', () => {
 
   describe('Makers:ID', () => {
     describe('GET', () => {
-      it('should return a status of 404 if the Id is missing from the database', () => {
+      it('should return a status of 404 if the Id is not found in the database', done => {
         chai.request(app)
-          .get('/api/v1/makers/12345')
+          .get('/api/v1/makers/abcd')
           .end((err, response) => {
-            expect(response).to.have.status(404);
+            expect(response).to.have.status(404)
+            done()
           });
       });
     });
@@ -85,26 +90,28 @@ describe('Server', () => {
 
   describe('Models', () => {
     describe('GET', () => {
-      it('should return text to the home page', () => {
+      it('should return text to the home page', done => {
         chai.request(app)
           .get('/api/v1/models')
           .end((err, response) => {
             expect(response).to.have.status(200);
+            done()
           });
       });
 
-      it('should return an array of objects', () => {
+      it('should return an array of objects', done => {
         chai.request(app)
           .get('/api/v1/models')
           .end((err, response) => {
             expect(response.body).to.be.a('array');
+            done()
           });
       });
 
     });
 
     describe('POST', () => {
-      it('should return a 201 status if successful', () => {
+      it('should return a 201 status if successful', done => {
         const newModel = {
           "model": "Zonda R",
           "displacement": "6",
@@ -120,10 +127,11 @@ describe('Server', () => {
           .send(newModel)
           .end((err, response) => {
             expect(response).to.have.status(201);
+            done()
           });
       });
 
-      it('should return a 422 if any params are missing', () => {
+      it('should return a 422 if any params are missing', done => {
         const newModel = {
           "displacement": "6",
           "engine": "V12",
@@ -138,6 +146,7 @@ describe('Server', () => {
           .send(newModel)
           .end((err, response) => {
             expect(response).to.have.status(422);
+            done()
           });
       });
 
