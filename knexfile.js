@@ -12,39 +12,42 @@ module.exports = {
       directory: './db/seeds/dev/'
     },
     useNullAsDefault: true,
+  },
 
+  testing: {
+    client: 'pg',
+    connection: 'postgres://localhost/cars',
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/dev/'
+    },
+    useNullAsDefault: true,
   },
 
   staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: 'pg',
+    connection: 'postgres://localhost/cars',
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/dev/'
+    },
+    useNullAsDefault: true,
   },
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: 'pg',
+    connection: 'postgres://localhost/cars',
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/dev/'
+    },
+    useNullAsDefault: true,
+  },
 
 };

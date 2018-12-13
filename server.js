@@ -102,9 +102,14 @@ app.post('/api/v1/models', (request, response) => {
 //     }
 //   }
 
-//   database('makers').where('id', id).update('maker', updatedMaker);
+//   database('makers').where('id', id)
+//     .update(updatedMaker)
+//     .returning(id)
+//     .then(data => {
+//       response.send(data)
+//     });
 //   // response.status(200).json();
-//   response.send(`Done`)
+//   // response.send(`Done`)
 // });
 
 app.patch('/api/v1/models', (request, response) => {

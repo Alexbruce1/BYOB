@@ -1,8 +1,12 @@
+process.env.NODE_ENV = 'testing';
+
 const chai = require('chai');
-const should = chai.should();
 const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const app = require('../server');
+
+const config = require('../knexfile')['testing'];
+const database = require('knex')(config);
 
 chai.use(chaiHttp);
 
@@ -10,6 +14,15 @@ chai.use(chaiHttp);
 
 describe('Server', () => {
   describe('Makers', () => {
+    
+    beforeEach(done => {
+      database.migrate
+        .rollback()
+        .then(() => database.migrate.latest())
+        .then(() => database.seed.run())
+        .then(() => done())
+    });
+
     describe('GET', () => {
       it('should return text to the home page', done => {
         chai.request(app)
@@ -66,6 +79,15 @@ describe('Server', () => {
   });
 
   describe('Makers:ID', () => {
+
+    beforeEach(done => {
+      database.migrate
+        .rollback()
+        .then(() => database.migrate.latest())
+        .then(() => database.seed.run())
+        .then(() => done())
+    });
+
     describe('GET', () => {
       it('should return a status of 404 if the Id is not found in the database', done => {
         chai.request(app)
@@ -89,6 +111,15 @@ describe('Server', () => {
   });
 
   describe('Models', () => {
+
+    beforeEach(done => {
+      database.migrate
+        .rollback()
+        .then(() => database.migrate.latest())
+        .then(() => database.seed.run())
+        .then(() => done())
+    });
+
     describe('GET', () => {
       it('should return text to the home page', done => {
         chai.request(app)
@@ -159,6 +190,15 @@ describe('Server', () => {
 });
 
 describe('Models:ID', () => {
+
+  beforeEach(done => {
+    database.migrate
+      .rollback()
+      .then(() => database.migrate.latest())
+      .then(() => database.seed.run())
+      .then(() => done(
+  });
+
     describe('GET', () => {
       // it('should', () => {
       // });
