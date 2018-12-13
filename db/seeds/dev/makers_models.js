@@ -25,8 +25,6 @@ exports.seed = function(knex, Promise) {
         })
       )
     })
- });
-
 };
 
 const createModel = (knex, model, id) => {

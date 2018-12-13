@@ -39,6 +39,9 @@ app.get('/api/v1/makers/:id', (request, response) => {
     .then(result => {
       response.status(200).json(result)
     })
+    .catch(error => {
+      response.status(404).json(error)
+    });
 });
 
 app.get('/api/v1/models/:id', (request, response) => {
@@ -48,6 +51,9 @@ app.get('/api/v1/models/:id', (request, response) => {
     .then(result => {
       response.status(200).json(result)
     })
+    .catch(error => {
+      response.status(404).json(`${id} was not found`)
+    });
 });
 
 app.post('/api/v1/makers', (request, response) => {
@@ -84,10 +90,22 @@ app.post('/api/v1/models', (request, response) => {
     })
 })
 
-app.patch('/api/v1/makers', (request, response) => {
-  
-  // response.status(200).json();
-});
+// app.put('/api/v1/makers/:id', (request, response) => {
+//   const { id } = request.params;
+//   const updatedMaker = {
+//     ...request.body
+//   }
+
+//   for (let requiredParam of ['maker', 'year']) {
+//     if (!updatedMaker[requiredParam]) {
+//       return response.status(422).json({ error: `Missing param ${requiredParam}` })
+//     }
+//   }
+
+//   database('makers').where('id', id).update('maker', updatedMaker);
+//   // response.status(200).json();
+//   response.send(`Done`)
+// });
 
 app.patch('/api/v1/models', (request, response) => {
   
@@ -115,3 +133,5 @@ app.delete('/api/v1/models/:id', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
+
+module.exports = app;
