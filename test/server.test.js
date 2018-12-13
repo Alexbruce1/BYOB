@@ -196,7 +196,7 @@ describe('Models:ID', () => {
       .rollback()
       .then(() => database.migrate.latest())
       .then(() => database.seed.run())
-      .then(() => done(
+      .then(() => done())
   });
 
     describe('GET', () => {
